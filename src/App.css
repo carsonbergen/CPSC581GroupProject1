@@ -11,7 +11,7 @@
   flex-direction: row;
 }
 
-.quadrant {
+.quadrant-container {
   width: 50%;
   height: 100%;
 }
