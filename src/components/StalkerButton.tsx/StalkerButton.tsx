@@ -1,5 +1,6 @@
 import { MouseEventHandler, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { between } from "../../util/between";
 
 /**
  * Mozilla & React documentation consulted
@@ -10,9 +11,6 @@ import { motion } from "framer-motion";
  *
  */
 
-const between = (a: number, from: number, to: number) => {
-  return a < to && a > from;
-};
 
 export default function StalkerButton({
   onClick,
