@@ -1,6 +1,6 @@
 import './App.css'
 
-// import { useData } from './DataContext';
+import { useData } from './DataContext';
 
 import Quadrant from './components/Quadrant/Quadrant';
 
@@ -28,8 +28,17 @@ import unselectedWorkoutQuadrantPath from './assets/workout/unselected.png';
 // This can be set like the others as a file path once the real gif is added to the assets directory
 const temporaryWorkoutGif = 'https://media3.giphy.com/media/W7dBXzbnEpOBG/giphy.webp?cid=790b7611eoq6ivp1ebw9gc6oyq1qq5daq6u3z99eefcf2xkl&ep=v1_gifs_search&rid=giphy.webp&ct=g';
 
+const OverlayButton = () => {
+  const { setCharacterIdle } = useData();
+  return (
+    <div className="overlay-button-container">
+      <button className="overlay-button" onClick={() => setCharacterIdle(false)}>ANIMATE</button>
+    </div>
+  );
+};
+
 function App() {
-  // const { activeQuadrant, setActiveQuadrant, characterIdle, setCharacterIdle } = useData();
+  const { activeQuadrant, setActiveQuadrant } = useData();
 
   return (
     <div className='app-content'>
@@ -73,6 +82,7 @@ function App() {
           </Quadrant>
         </div>
       </div>
+      {activeQuadrant && <OverlayButton></OverlayButton>}
     </div>
   )
 }

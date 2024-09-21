@@ -12,10 +12,16 @@ interface QuadrantProps {
 const Quadrant: React.FC<QuadrantProps> = ({ index, unselectedQuadrantAssetPath, idleCharacterAssetPath, animatedCharacterAssetPath }) => {
   const { activeQuadrant, setActiveQuadrant, characterIdle, setCharacterIdle } = useData();
 
-  const isActiveQuadrant = (): boolean => index === activeQuadrant; 
+  const isActiveQuadrant = (): boolean => index === activeQuadrant;
+  const updateActiveQuadrant = () => {
+    if (!isActiveQuadrant()) {
+      setActiveQuadrant(index);
+      setCharacterIdle(true);
+    }
+  };
 
   return (
-    <div className='content' onClick={() => !isActiveQuadrant() ? setActiveQuadrant(index) : setCharacterIdle(!characterIdle)}>
+    <div className='content' onClick={() => updateActiveQuadrant()}>
       <div className='asset-container'>
         {
           !isActiveQuadrant() &&
