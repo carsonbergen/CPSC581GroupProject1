@@ -1,7 +1,7 @@
 import './Quadrant.css'
 
 import { useData } from '../../DataContext';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMousePosition } from '../../MouseContext';
 import { between } from '../../util/between';
 

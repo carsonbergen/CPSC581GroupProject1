@@ -33,20 +33,6 @@ import StalkerButton from "./components/StalkerButton.tsx/StalkerButton";
 const temporaryWorkoutGif =
   "https://media3.giphy.com/media/W7dBXzbnEpOBG/giphy.webp?cid=790b7611eoq6ivp1ebw9gc6oyq1qq5daq6u3z99eefcf2xkl&ep=v1_gifs_search&rid=giphy.webp&ct=g";
 
-const OverlayButton = () => {
-  const { setCharacterIdle } = useData();
-  return (
-    <div className="overlay-button-container">
-      <button
-        className="overlay-button"
-        onClick={() => setCharacterIdle(false)}
-      >
-        ANIMATE
-      </button>
-    </div>
-  );
-};
-
 function App() {
   // const { activeQuadrant, setActiveQuadrant } = useData();
   const { setCharacterIdle } = useData();
@@ -94,7 +80,6 @@ function App() {
             ></Quadrant>
           </div>
         </div>
-        {/* {activeQuadrant && <OverlayButton></OverlayButton>} */}
       </div>
     </>
   );
