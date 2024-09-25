@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
 
-    border: 1px solid whitesmoke; /* Temporary way of distinguishing quadrants */
+    border: 1px solid black; /* Temporary way of distinguishing quadrants */
 
     cursor: pointer;
 
