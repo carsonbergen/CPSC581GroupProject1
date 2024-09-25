@@ -112,15 +112,13 @@ function findClosestQuadrant(x: number, y: number, width: number, height: number
   };
 
   // Find the closest center
-  let closestCenterKey = "";
   let closestCenter: Point = { x: 0, y: 0 };
   let minDistance = Infinity;
 
-  for (const [key, center] of Object.entries(centers)) {
+  for (const [_, center] of Object.entries(centers)) {
     const dist = distance({ x, y }, center);
     if (dist < minDistance) {
       minDistance = dist;
-      closestCenterKey = key;
       closestCenter = center;
     }
   }

@@ -14,8 +14,8 @@ const MouseContext = createContext<MouseContextType | undefined>(undefined);
 
 export const MouseProvider: React.FC<{children: ReactNode}> = ({ children }) => {
     const [mousePosition, setMousePosition] = useState<position>({
-        x: 25, 
-        y: 25,
+        x: window.innerWidth/2, 
+        y: window.innerHeight/2,
     });
     return (
         <MouseContext.Provider value={{ mousePosition, setMousePosition }}>
