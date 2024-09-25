@@ -48,6 +48,11 @@ export default function DraggableButton({}: { disabled: boolean }) {
     }
   };
 
+  const moveToNearestQuadrant = () => {
+    const pointToGoTo = findClosestQuadrant(mousePos.x, mousePos.y, window.innerWidth, window.innerHeight);
+    setMousePosition({ x: pointToGoTo.x, y: pointToGoTo.y });
+  };
+
   useEffect(() => {
     if (move) {
       setMousePosition({ x: mousePos.x, y: mousePos.y });
@@ -81,10 +86,44 @@ export default function DraggableButton({}: { disabled: boolean }) {
       }}
       onMouseUp={() => {
         setMove(false);
+        moveToNearestQuadrant();
       }}
       ref={buttonRef}
     >
       <img style={{pointerEvents: "none"}} src={drabbleCharacter}></img>
     </motion.button>
   );
+}
+
+type Point = { x: number; y: number };
+
+function findClosestQuadrant(x: number, y: number, width: number, height: number): Point {
+  // Defining the centers of the four quadrants
+  const centers: { [key: string]: Point } = {
+    "top-left": { x: width / 4, y: height / 4 },
+    "top-right": { x: (3 * width) / 4, y: height / 4 },
+    "bottom-left": { x: width / 4, y: (3 * height) / 4 },
+    "bottom-right": { x: (3 * width) / 4, y: (3 * height) / 4 },
+  };
+
+  // Function to calculate Euclidean distance between two points
+  const distance = (p1: Point, p2: Point): number => {
+    return Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+  };
+
+  // Find the closest center
+  let closestCenterKey = "";
+  let closestCenter: Point = { x: 0, y: 0 };
+  let minDistance = Infinity;
+
+  for (const [key, center] of Object.entries(centers)) {
+    const dist = distance({ x, y }, center);
+    if (dist < minDistance) {
+      minDistance = dist;
+      closestCenterKey = key;
+      closestCenter = center;
+    }
+  }
+
+  return closestCenter;
 }
