@@ -71,7 +71,7 @@ export default function DraggableButton({ disabled }: { disabled: boolean }) {
       }}
       transition={{
         type: "tween",
-        duration: 0.0,
+        duration: 0.05,
       }}
       onMouseDown={() => {
         setMove(true);
@@ -79,9 +79,9 @@ export default function DraggableButton({ disabled }: { disabled: boolean }) {
       onMouseUp={() => {
         setMove(false);
       }}
-      onMouseLeave={() => {
-        setMove(false);
-      }}
+      // onMouseLeave={() => {
+      //   setMove(false);
+      // }}
       ref={buttonRef}
     >
       <svg
