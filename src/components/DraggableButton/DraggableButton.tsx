@@ -86,6 +86,7 @@ export default function DraggableButton({}: { disabled: boolean }) {
         duration: 0.05,
       }}
       onMouseDown={() => {
+        setActiveQuadrant(0);
         setMove(true);
       }}
       onMouseUp={() => {
