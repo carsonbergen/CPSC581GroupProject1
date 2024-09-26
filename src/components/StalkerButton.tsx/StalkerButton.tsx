@@ -2,6 +2,8 @@ import { MouseEventHandler, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { between } from "../../util/between";
 
+import { useData } from "../../DataContext";
+
 /**
  * Mozilla & React documentation consulted
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
@@ -23,6 +25,8 @@ export default function StalkerButton({
     x: 100,
     y: 100,
   });
+
+  const { characterIdle } = useData();
 
   const [pos, setPos] = useState({
     x: 0,
@@ -87,7 +91,7 @@ export default function StalkerButton({
       <button
         onClick={onClick}
       >
-        {`Do!`}
+        {characterIdle ? 'Animate!' : 'Stop!'}
       </button>
     </motion.div>
   );
