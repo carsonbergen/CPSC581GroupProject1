@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useMousePosition } from "../../MouseContext";
 
 import drabbleCharacter from "../../assets/draggable.png";
+import { useData } from "../../DataContext";
 
 /**
  * Mozilla & React documentation consulted
@@ -21,6 +22,8 @@ export default function DraggableButton({}: { disabled: boolean }) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   
   const [move, setMove] = useState<boolean>(false);
+
+  const { activeQuadrant, setActiveQuadrant } = useData();
 
   const { mousePosition, setMousePosition } = useMousePosition();
 
@@ -51,6 +54,7 @@ export default function DraggableButton({}: { disabled: boolean }) {
   const moveToNearestQuadrant = () => {
     const pointToGoTo = findClosestQuadrant(mousePos.x, mousePos.y, window.innerWidth, window.innerHeight);
     setMousePosition({ x: pointToGoTo.x, y: pointToGoTo.y });
+    setActiveQuadrant(pointToGoTo.quadrantIndex);
   };
 
   useEffect(() => {
@@ -85,25 +89,25 @@ export default function DraggableButton({}: { disabled: boolean }) {
         setMove(true);
       }}
       onMouseUp={() => {
-        setMove(false);
         moveToNearestQuadrant();
+        setMove(false);
       }}
       ref={buttonRef}
     >
-      <img style={{pointerEvents: "none"}} src={drabbleCharacter}></img>
+      <img style={{pointerEvents: "none", maxWidth: '20vw', opacity: (move || !activeQuadrant) ? 1 : 0}} src={drabbleCharacter}></img>
     </motion.button>
   );
 }
 
-type Point = { x: number; y: number };
+type Point = { quadrantIndex: number, x: number; y: number };
 
 function findClosestQuadrant(x: number, y: number, width: number, height: number): Point {
   // Defining the centers of the four quadrants
   const centers: { [key: string]: Point } = {
-    "top-left": { x: width / 4, y: height / 4 },
-    "top-right": { x: (3 * width) / 4, y: height / 4 },
-    "bottom-left": { x: width / 4, y: (3 * height) / 4 },
-    "bottom-right": { x: (3 * width) / 4, y: (3 * height) / 4 },
+    "top-left": { quadrantIndex: 1, x: width / 4, y: height / 4 },
+    "top-right": { quadrantIndex: 2, x: (3 * width) / 4, y: height / 4 },
+    "bottom-left": { quadrantIndex: 3, x: width / 4, y: (3 * height) / 4 },
+    "bottom-right": { quadrantIndex: 4, x: (3 * width) / 4, y: (3 * height) / 4 },
   };
 
   // Function to calculate Euclidean distance between two points
@@ -112,11 +116,11 @@ function findClosestQuadrant(x: number, y: number, width: number, height: number
   };
 
   // Find the closest center
-  let closestCenter: Point = { x: 0, y: 0 };
+  let closestCenter: Point = { quadrantIndex: 0, x: 0, y: 0 };
   let minDistance = Infinity;
 
   for (const [_, center] of Object.entries(centers)) {
-    const dist = distance({ x, y }, center);
+    const dist = distance({ x, y, quadrantIndex: 0 }, center);
     if (dist < minDistance) {
       minDistance = dist;
       closestCenter = center;

@@ -12,14 +12,15 @@ const temporaryFoodGif =
   "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXFtOGlwYXVodXp1NTlhMzNneWlsOTk3eXRydW1vdjNjMWhmZXd4eSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/K4x1ZL36xWCf6/200.webp";
 
 // DEFINING MUSIC QUADRANT ASSETS
-import idleMusicCharacterPath from "./assets/music/lil_guy_music_idle.png";
+import idleMusicCharacterPath from "./assets/music/idleCharacter.png";
 import unselectedMusicQuadrantPath from "./assets/music/unselected.png";
 // This can be set like the others as a file path once the real gif is added to the assets directory
-import temporaryMusicGif from "./assets/music/pixil-playing_guitar.png";
+const temporaryMusicGif = 
+  'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXZ3MTQ4Y2h3MmtqcGk4ZjF6a2R6aDd1YmZnczd3dGc4a2p2a3I4ZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tJU72w9lPzUPe/200.webp';
 
-// DEFINING SLEEP QUADRANT ASSETS
-import idleSleepCharacterPath from "./assets/sleep/idleCharacter.png";
-import unselectedSleepQuadrantPath from "./assets/sleep/unselected.png";
+// DEFINING PROGRAMMING QUADRANT ASSETS
+import idleSleepCharacterPath from "./assets/programming/idleCharacter.png";
+import unselectedSleepQuadrantPath from "./assets/programming/unselected.png";
 // This can be set like the others as a file path once the real gif is added to the assets directory
 const temporarySleepGif =
   "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2dmc2t3N29pbTd5MjNsNjg2YW5wM2xxdnoxMnQ1aXN3ZXhoN2NoaCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/QjdvZSi8f5JsXouSFp/200.webp";
