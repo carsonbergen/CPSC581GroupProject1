@@ -77,7 +77,7 @@ export default function StalkerButton({
     <motion.div
       style={{
         position: "absolute",
-        z: 50,
+        zIndex: 9999,
       }}
       animate={{
         left: `${pos.x - mouseOffset.x}px`,
