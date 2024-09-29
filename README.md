@@ -1,7 +1,9 @@
 # A Tale of Two Buttons
 ### By Alex Dalgleish-Morel, Guilherme Marques and Carson Bergen
 
-## How to run the application
+## App is publicly available at https://carsonbergen.github.io/CPSC581GroupProject1/
+
+## How to run the application locally
 
 Ensure you have both `Node.js` and `npm` installed on your machine.
 
