@@ -75,7 +75,7 @@ export default function DraggableButton({}: { disabled: boolean }) {
       style={{
         backgroundColor: 'rgba(0,0,0,0)',
         position: "absolute",
-        zIndex: 10,
+        zIndex: 1,
       }}
       animate={{
         left: `${mousePosition.x - mouseOffset.x}px`,
